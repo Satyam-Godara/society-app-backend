@@ -42,7 +42,7 @@ router.post('/create-order', auth, async (req, res) => {
         user_id:    req.user.id,
         society_id: req.user.society_id,
         bill_type:  bill.type,
-        flat:       bill.users?.name,
+        // flat:       bill.users?.name,
       }
     );
 
@@ -52,6 +52,15 @@ router.post('/create-order', auth, async (req, res) => {
       .update({ razorpay_order_id: order.id })
       .eq('id', bill.id);
 
+      console.log({
+  order_id:   order.id,
+  amount:     order.amount,
+  currency:   order.currency,
+  key_id:     process.env.RAZORPAY_KEY_ID,
+  bill_type:  bill.type,
+  user_name:  bill.users?.name,
+  user_phone: bill.users?.phone,
+});
     res.json({
       order_id:   order.id,
       amount:     order.amount,      // in paise

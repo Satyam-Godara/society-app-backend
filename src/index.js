@@ -83,6 +83,8 @@ app.use('/api/complaints', require('./routes/complaints'));
 app.use('/api/notices',    require('./routes/notices'));
 app.use('/api/ai',         require('./routes/ai'));
 app.use('/api/payments',   require('./routes/payments'));
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/reports', require('./routes/reports'));
 
 // Health check — Railway uses this to confirm app is running
 app.get('/health', (req, res) => {
